@@ -21,15 +21,14 @@ namespace Levels
         {
             if (_levelsData.LevelsEnded)
             {
-                LevelsPrefsData.CurrentLevelIndex = 0;
-                LevelsPrefsData.LastAnswerIndex = -1;
+                LevelsPrefsData.ClearLevelData();
             }
             SpawnLevel(true);
         }
         
         public void NextLevel()
         {
-            LevelsPrefsData.CurrentLevelIndex++;
+            LevelsPrefsData.AddLevelIndex();
 
             if (_levelsData.LevelsEnded)
             {
@@ -92,7 +91,7 @@ namespace Levels
             while(randomIndex == LevelsPrefsData.LastAnswerIndex)
                 randomIndex = Random.Range(0, currentLevel.Cards.Length);
 
-            LevelsPrefsData.LastAnswerIndex = randomIndex;
+            LevelsPrefsData.UpdateLastAnswer(randomIndex);
             return currentLevel.Cards[randomIndex];
         }
     }

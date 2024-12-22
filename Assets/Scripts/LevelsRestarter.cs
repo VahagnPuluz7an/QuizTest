@@ -35,8 +35,7 @@ public class LevelsRestarter : MonoBehaviour
     {
         restartButton.gameObject.SetActive(false);
         
-        LevelsPrefsData.CurrentLevelIndex = 0;
-        LevelsPrefsData.LastAnswerIndex = -1;
+        LevelsPrefsData.ClearLevelData();
 
         fadeImage.DOFade(0.95f, 0.5f).onComplete += () =>
         {
